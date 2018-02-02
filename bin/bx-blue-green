@@ -58,18 +58,17 @@ sleep ${BX_SLEEP:-5} # Waits 5 seconds.
 # ensure it starts
 curl --fail -I "https://${GREEN}.${DOMAIN}"
 
-#Grabs the route fro the manifest and pulls out the hostname along with the route
-HOSTNAMES=$(cat './speech-to-text-demo_manifest.yml' | grep '  - route:' |  cut -d' '  -f 5- |cut -d'.' -f 1 )
-DOMAINS=$(cat './speech-to-text-demo_manifest.yml' | grep "  - route:" |  cut -d' '  -f 5- |cut -d'.' -f 2- )
+# Grabs the route from the manifest and pulls out the hostname along with the route
+HOSTNAMES=$(cat $MANIFEST | grep '  - route:' |  cut -d' '  -f 5- |cut -d'.' -f 1 )
+DOMAINS=$(cat $MANIFEST | grep "  - route:" |  cut -d' '  -f 5- |cut -d'.' -f 2- )
 
 #Convert variables into a proper array
 HOSTNAMES=($HOSTNAMES)
 DOMAINS=($DOMAINS)
+
 #Iterate over them and use index value to pull respective Domain value
 for i in "${!HOSTNAMES[@]}"
 do
-  # echo $i
-  # echo ${DOMAINS[i]}
   bx cf map-route $GREEN ${DOMAINS[i]} ${HOSTNAMES[i]}
 done
 
