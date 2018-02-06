@@ -69,7 +69,8 @@ DOMAINS=($DOMAINS)
 #Iterate over them and use index value to pull respective Domain value
 for i in "${!HOSTNAMES[@]}"
 do
-  bx cf map-route $GREEN ${DOMAINS[i]} ${HOSTNAMES[i]}
+  echo mapping Domain: ${DOMAINS[i]} Hostname:${HOSTNAMES[i]}
+  bx cf map-route $GREEN ${DOMAINS[i]} --hostname ${HOSTNAMES[i]}
 done
 
 
