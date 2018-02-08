@@ -72,9 +72,11 @@ deploy:
     branch: [git branch you want to deploy]
 ```
 
-`BX_SLEEP` defines the number of seconds to sleep before replacing BLUE with GREEN. Useful when the new application requires some time to start.
+`BX_SLEEP` - defines the number of seconds to sleep before replacing BLUE with GREEN. Useful when the new application requires some time to start.
 
-`BX_IGNORE_DEFAULT_ROUTE` will force the green app to use the domain specified in `B_DOMAIN`. If your green app is being deployed to a route you specifically do not want, set this variable to true.
+`B_DOMAIN` - Use this to specify a specific domain for where your green app will be stood up ( Usually equal to your default route )
+
+`BX_IGNORE_DEFAULT_ROUTE` - will force the green app to use the domain specified in `B_DOMAIN`. If your green app is being deployed to a route you specifically do not want, set this variable to true. If this is set, then `B_DOMAIN` is required
 
 ### Manifests
 
