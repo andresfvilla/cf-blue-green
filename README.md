@@ -62,7 +62,7 @@ env:
   - BX_ORGANIZATION=[organization]
   - BX_SPACE=[space]
   - BX_SLEEP=[# seconds to wait before swapping BLUE with GREEN]
-  - $BX_IGNORE_DEFAULT_ROUTE=[Will ignore the orgs default route when deploying new app]
+  - $BX_IGNORE_DEFAULT_ROUTE=[true/false Will ignore the orgs default route when deploying new app]
   - secure: [BLUEMIX_API_KEY=[encrypted with Travis](http://docs.travis-ci.com/user/environment-variables/#Encrypted-Variables)]
 before_deploy: npm install -g https://github.com/andresfvilla/bx-blue-green
 deploy:
@@ -73,6 +73,8 @@ deploy:
 ```
 
 `BX_SLEEP` defines the number of seconds to sleep before replacing BLUE with GREEN. Useful when the new application requires some time to start.
+
+`BX_IGNORE_DEFAULT_ROUTE` will force the green app to use the domain specified in `B_DOMAIN`. If your green app is being deployed to a route you specifically do not want, set this variable to true.
 
 ### Manifests
 
