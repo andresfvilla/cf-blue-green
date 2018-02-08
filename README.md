@@ -62,6 +62,7 @@ env:
   - BX_ORGANIZATION=[organization]
   - BX_SPACE=[space]
   - BX_SLEEP=[# seconds to wait before swapping BLUE with GREEN]
+  - $BX_IGNORE_DEFAULT_ROUTE=[Will ignore the orgs default route when deploying new app]
   - secure: [BLUEMIX_API_KEY=[encrypted with Travis](http://docs.travis-ci.com/user/environment-variables/#Encrypted-Variables)]
 before_deploy: npm install -g https://github.com/andresfvilla/bx-blue-green
 deploy:
