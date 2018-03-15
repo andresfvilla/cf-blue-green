@@ -1,3 +1,9 @@
+[![Build Status](https://travis-ci.org/andresfvilla/bx-blue-green-test.svg?branch=master)](https://travis-ci.org/andresfvilla/bx-blue-green-test)
+
+# Build Status
+
+uses [bx-blue-green-test](https://github.com/andresfvilla/bx-blue-green-test) as a simple application to ensure that this project is able to download and install the CLI as well as push the deployment to bluemix
+
 # Blue-green deployments for Cloud Foundry based Bluemix apps
 
 Allows zero-downtime deployments of applications within Bluemix, with no additional setup needed.
