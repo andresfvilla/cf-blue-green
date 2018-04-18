@@ -8,7 +8,6 @@ set -e
 set -o pipefail
 set -x
 
-
 if [ $# -eq 0 ]; then
 	echo "Usage:\n\n\t./bx-blue-green <appname> <domain(optional)> <Ignore default route(optional)>\n"
 	exit 1
@@ -42,7 +41,7 @@ esac
 shift # past argument or value
 done
 
-
+exit 1
 finally ()
 {
   # we don't want to keep the sensitive information around

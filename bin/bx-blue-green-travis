@@ -28,8 +28,21 @@ pushd `dirname $0` > /dev/null
 SCRIPTPATH=`pwd`
 popd > /dev/null
 
+SCRIPT=$SCRIPTPATH/bx-blue-green $BX_APP --domain $B_DOMAIN --ignore-route $BX_IGNORE_DEFAULT_ROUTE --path $BX_PATH
+
+if [ -z "$B_DOMAIN" ]; then
+    SCRIPT="$SCRIPT --domain $B_DOMAIN"
+fi
+
+if [ -z "$BX_IGNORE_DEFAULT_ROUTES" ]; then
+    SCRIPT="$SCRIPT --ignore-route $BX_IGNORE_DEFAULT_ROUTE"
+fi
+
+if [ -z "$BX_PATH" ]; then
+    SCRIPT="$SCRIPT --path $BX_PATH"
+fi
 
 
-$SCRIPTPATH/bx-blue-green $BX_APP --domain $B_DOMAIN --ignore-route $BX_IGNORE_DEFAULT_ROUTE --path $BX_PATH
+$SCRIPT
 
 bx logout
