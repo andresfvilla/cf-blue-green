@@ -8,7 +8,6 @@ set -e
 set -o pipefail
 set -x
 
-
 if [ $# -eq 0 ]; then
 	echo "Usage:\n\n\t./bx-blue-green <appname> <domain(optional)> <Ignore default route(optional)>\n"
 	exit 1
@@ -16,6 +15,7 @@ fi
 
 
 BLUE=$1
+shift
 GREEN="${BLUE}-B"
 
 while [[ $# -gt 1 ]]
@@ -26,22 +26,23 @@ case $key in
     --domain)
     B_DOMAIN="$2"
     shift # past argument
+    shift # past value
     ;;
     --path)
     BX_PATH="-p $2"
     shift # past argument
+    shift # past value
     ;;
-    --ignore-route)
+    --ignore)
     BX_IGNORE_DEFAULT_ROUTES="-d $2"
     shift # past argument
+    shift # past value
     ;;
     *)
             # unknown option
     ;;
 esac
-shift # past argument or value
 done
-
 
 finally ()
 {
@@ -53,7 +54,6 @@ on_fail () {
   finally
   echo "DEPLOY FAILED - you may need to check 'bx cf apps' and 'bx cf routes' and do manual cleanup"
 }
-
 
 # pull the up-to-date manifest from the BLUE (existing) application
 MANIFEST=$(mktemp -t "${BLUE}_manifest.XXXXXXXXXX")
