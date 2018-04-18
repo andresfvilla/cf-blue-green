@@ -41,7 +41,6 @@ esac
 shift # past argument or value
 done
 
-exit 1
 finally ()
 {
   # we don't want to keep the sensitive information around
