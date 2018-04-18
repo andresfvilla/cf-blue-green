@@ -68,7 +68,11 @@ DOMAIN=${B_DOMAIN:-"mybluemix.net"}
 echo "domain set to: ${DOMAIN}"
 
 # Cloudfoundry pushes to default unless otherwise specified
-bx cf push $GREEN -f $MANIFEST -n $GREEN $DOMAIN $BX_PATH
+if [ -z "$BX_IGNORE_DEFAULT_ROUTES" ]; then
+  bx cf push $GREEN -f $MANIFEST -n $GREEN $BX_PATH
+else
+  bx cf push $GREEN -f $MANIFEST -n $GREEN -d $DOMAIN $BX_PATH
+fi
 
 # wait for the apps to start
 sleep ${BX_SLEEP:-5} # Waits 5 seconds.
