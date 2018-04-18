@@ -35,7 +35,7 @@ if [ -n "$B_DOMAIN" ]; then
 fi
 
 if [ -n "$BX_IGNORE_DEFAULT_ROUTES" ]; then
-    SCRIPT="$SCRIPT --ignore-route $BX_IGNORE_DEFAULT_ROUTE"
+    SCRIPT="$SCRIPT --ignore $BX_IGNORE_DEFAULT_ROUTES"
 fi
 
 if [ -n "$BX_PATH" ]; then
