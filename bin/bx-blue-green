@@ -17,6 +17,7 @@ fi
 BLUE=$1
 shift
 GREEN="${BLUE}-B"
+TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 
 while [[ $# -gt 1 ]]
 do
@@ -98,9 +99,11 @@ done
 
 # cleanup
 # TODO consider 'stop'-ing the BLUE instead of deleting it, so that depedencies are cached for next time
-bx cf delete $BLUE -f
+OLD_APP=$BLUE-old-$TIMESTAMP
+bx cf rename $BLUE $OLD_APP
 bx cf rename $GREEN $BLUE
 bx cf delete-route $DOMAIN -n $GREEN -f
+bx cf delete $OLD_APP || true
 finally
 
 echo "DONE"
