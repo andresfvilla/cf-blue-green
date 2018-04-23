@@ -105,7 +105,7 @@ echo "${OLD_APP}"
 bx cf rename $BLUE $OLD_APP
 bx cf rename $GREEN $BLUE
 bx cf delete-route $DOMAIN -n $GREEN -f
-bx cf delete $OLD_APP || true
+bx cf delete $OLD_APP -f || true
 finally
 
 echo "DONE"
