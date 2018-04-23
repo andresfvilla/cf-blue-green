@@ -17,7 +17,7 @@ fi
 BLUE=$1
 shift
 GREEN="${BLUE}-B"
-TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
+TIMESTAMP=$(date '+%s')
 
 while [[ $# -gt 1 ]]
 do
