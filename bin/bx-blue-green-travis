@@ -14,7 +14,10 @@ tar -xvf IBM_Cloud_CLI_0.6.6_amd64.tar.gz
  
 echo $BX_API
 echo "Printed bluemix API"
+bx config --check-version=false
 bx api $BX_API
+
+
 
 bx login
 
