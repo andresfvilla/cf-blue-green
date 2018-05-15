@@ -1,6 +1,6 @@
 {
   "name": "bx-blue-green",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "zero-downtime deployment for Cloud Foundry based applications on bluemix",
   "repository": {
     "type": "git",
